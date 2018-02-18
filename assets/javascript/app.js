@@ -18,66 +18,64 @@ let questions = [{name:"question1",
                         }]
                 },
                 {name: "question2",
-                  info: "CSS is",
+                  toDisplay: "CSS is",
                   answers:[{
                             isCorrect:true,
-                            content:"All of these answers are true"
+                            toDisplay:"All of these answers are true"
                           },
                           {
                             isCorrect:false,
-                            content:"A stylesheet language"
+                            toDisplay:"A stylesheet language"
                           },
                           {
                             isCorrect:false,
-                            content:"Used to describe the presentation of markup languages"
+                            toDisplay:"Used to describe the presentation of markup languages"
                           },
                           {
                             isCorrect:false,
-                            content:"the Devil"
+                            toDisplay:"the Devil"
                           }]
                   },
                   {
                     name:"question3",
-                    info: "Which of the following is true about javascript?",
+                    toDisplay: "Which of the following is true about javascript?",
                     answers:[{
                               isCorrect:true,
-                              content:"NAN is a number"
+                              toDisplay:"NAN is a number"
                             },
                             {
                               isCorrect:false,
-                              content:"It is exclusively a back-end language"
+                              toDisplay:"It is exclusively a back-end language"
                             },
                             {
                               isCorrect:false,
-                              content:"it makes extensive use of the '$' symbol as a selector"
+                              toDisplay:"it makes extensive use of the '$' symbol as a selector"
                             },
                             {
                               isCorrect:false,
-                              content:"Javascript is basically Java with less improvisation"
+                              toDisplay:"Javascript is basically Java with less improvisation"
                             }]
                     },
-                    {
-                      name: "question4",
-                      info: "Which fun fact about arrays is false?",
+                    { name: "question4",
+                      toDisplay: "Which fun fact about arrays is false?",
                       answers:[{
                                 isCorrect:true,
-                                content:"the bubblesort algorithm will organize any array on the first iteration through"
+                                toDisplay:"the bubblesort algorithm will organize any array on the first iteration through"
                               },
                               {
                                 isCorrect:false,
-                                content:"An array with no keys will evaluate to false"
+                                toDisplay:"An array with no keys will evaluate to false"
                               },
                               {
                                 isCorrect:false,
-                                content:"executing typeof on an array will return 'object'"
+                                toDisplay:"executing typeof on an array will return 'object'"
                               },
                               {
                                 isCorrect:false,
-                                content:"the Fisher-Yates Shuffle algorithm will randomize an array"
+                                toDisplay:"the Fisher-Yates Shuffle algorithm will randomize an array"
                               }]
                       },
-                      {
-                        name: "question5",
+                      { name: "question5",
                         info: "Jquery...",
                         answers:[{
                                   isCorrect:true,
