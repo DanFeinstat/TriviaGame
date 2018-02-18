@@ -1,20 +1,20 @@
 let questions = [{name:"question1",
-                  info: "What does HTML stand for?",
+                  toDisplay: "What does HTML stand for?",
                   answers:[{
                           isCorrect:true,
-                          content:"Hyper Text Markup Language"
+                          toDisplay:"Hyper Text Markup Language"
                         },
                         {
                           isCorrect:false,
-                          content:"Hifi Type Markup Language"
+                          toDisplay:"Hifi Type Markup Language"
                         },
                         {
                           isCorrect:false,
-                          content:"Handy Text Maker Language"
+                          toDisplay:"Handy Text Maker Language"
                         },
                         {
                           isCorrect:false,
-                          content:"Hip Tyrannosaurus Making Lassagna"
+                          toDisplay:"Hip Tyrannosaurus Making Lassagna"
                         }]
                 },
                 {name: "question2",
@@ -76,48 +76,70 @@ let questions = [{name:"question1",
                               }]
                       },
                       { name: "question5",
-                        info: "Jquery...",
+                        toDisplay: "Jquery...",
                         answers:[{
                                   isCorrect:true,
-                                  content:"is a cross-platform javascript library."
+                                  toDisplay:"is a cross-platform javascript library."
                                 },
                                 {
                                   isCorrect:false,
-                                  content:"is a cross-platform javascript framework."
+                                  toDisplay:"is a cross-platform javascript framework."
                                 },
                                 {
                                   isCorrect:false,
-                                  content:"is a compiled language."
+                                  toDisplay:"is a compiled language."
                                 },
                                 {
                                   isCorrect:false,
-                                  content:"is best use in concert with a js framework like react or angular."
+                                  toDisplay:"is best use in concert with a js framework like react or angular."
                                 }]
                         },
               ];
 //
 //
 //
-// //fisher-yates shuffle
-// function shuffle(array){
-//   var m = array.length;
-//   var t;
-//   var i;
-//
-//   //while there remain elements to shuffle
-//   while (m){
-//     //pick a remaining element
-//     i = Math.floor(Math.random() * m--);
-//
-//     //swap it with current element
-//     t = array[m];
-//     array[m]= array[i];
-//     array[i] = t;
-//   }
-//
-//   return array
-// }
+//fisher-yates shuffle
+function shuffle(array){
+  var m = array.length;
+  var t;
+  var i;
 
+  //while there remain elements to shuffle
+  while (m){
+    //pick a remaining element
+    i = Math.floor(Math.random() * m--);
+
+    //swap it with current element
+    t = array[m];
+    array[m]= array[i];
+    array[i] = t;
+  }
+
+  return array
+}
+
+//time interval
+function countdown(){
+  if(timeLeft > 0){
+  timeLeft --;
+  document.getElementById("timer").innerHTML = timeLeft;
+}else{
+    clearInterval(intervalId);
+  }
+}
+
+//Countdown timer
+function displayTime(){
+  timeLeft = 10;
+  console.log(timeLeft);
+  document.getElementById("timer").innerHTML = timeLeft;
+  intervalId = setInterval(countdown,1000);
+}
+
+//out of time function
+
+
+//start function  Initializes answer buttons and randomizes the order of the questions
 document.getElementById("startBtn").onclick = function(){
   document.getElementById("btnBox").innerHTML = "";
   document.getElementById("btnBox").innerHTML =
@@ -125,7 +147,14 @@ document.getElementById("startBtn").onclick = function(){
     <button type="button" id="answer2" class="btn mb-1 border">Answer2</button>\
     <button type="button" id="answer3" class="btn mb-1 border">Answer3</button>\
     <button type="button" id="answer4" class="btn mb-1 border">Answer4</button>';
-
+    shuffle(questions);
+    document.getElementById("question").innerHTML = questions[0].toDisplay;
+    shuffle(questions[0].answers);
+    document.getElementById("answer1").innerHTML = questions[0].answers[0].toDisplay;
+    document.getElementById("answer2").innerHTML = questions[0].answers[1].toDisplay;
+    document.getElementById("answer3").innerHTML = questions[0].answers[2].toDisplay;
+    document.getElementById("answer4").innerHTML = questions[0].answers[3].toDisplay;
+    displayTime();
 }
 
 // document.getElementById("answer1").onclick = function{
