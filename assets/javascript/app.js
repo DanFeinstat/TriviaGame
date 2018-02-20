@@ -35,7 +35,7 @@ let questionArray = [{name:"question1",
                           },
                           {
                             isCorrect:false,
-                            toDisplay:"the Devil"
+                            toDisplay:"The Devil"
                           }]
                   },
                   {
@@ -43,7 +43,7 @@ let questionArray = [{name:"question1",
                     toDisplay: "Which of the following is true about javascript?",
                     answers:[{
                               isCorrect:true,
-                              toDisplay:"NAN is a number"
+                              toDisplay:"In javascript, NAN is a number"
                             },
                             {
                               isCorrect:false,
@@ -51,7 +51,7 @@ let questionArray = [{name:"question1",
                             },
                             {
                               isCorrect:false,
-                              toDisplay:"it makes extensive use of the '$' symbol as a selector"
+                              toDisplay:"It makes extensive use of the '$' symbol as a selector"
                             },
                             {
                               isCorrect:false,
@@ -62,7 +62,7 @@ let questionArray = [{name:"question1",
                       toDisplay: "Which fun fact about arrays is false?",
                       answers:[{
                                 isCorrect:true,
-                                toDisplay:"the bubblesort algorithm will organize any array on the first iteration through"
+                                toDisplay:"The bubblesort algorithm will organize any array on the first iteration through"
                               },
                               {
                                 isCorrect:false,
@@ -70,11 +70,11 @@ let questionArray = [{name:"question1",
                               },
                               {
                                 isCorrect:false,
-                                toDisplay:"executing typeof on an array will return 'object'"
+                                toDisplay:"Executing typeof on an array will return 'object'"
                               },
                               {
                                 isCorrect:false,
-                                toDisplay:"the Fisher-Yates Shuffle algorithm will randomize an array"
+                                toDisplay:"The Fisher-Yates Shuffle algorithm will randomize an array"
                               }]
                       },
                       { name: "question5",
@@ -186,23 +186,37 @@ function populateDisplay(){
   document.getElementById("question").innerHTML = questionArray[qDex].toDisplay;
   shuffle(questionArray[qDex].answers);
   for(var i = 0; i<questionArray[qDex].answers.length; i++){
-  document.getElementById("answer"+(i+1)).innerHTML = questionArray[qDex].answers[i].toDisplay;
-  document.getElementById("answer"+(i+1)).setAttribute("value", questionArray[qDex].answers[i].isCorrect);
+    document.getElementById("answer"+(i+1)).innerHTML = questionArray[qDex].answers[i].toDisplay;
+    document.getElementById("answer"+(i+1)).setAttribute("value", questionArray[qDex].answers[i].isCorrect);
   }
 }
 
+
 function nextQuestion(){
-  populateDisplay();
-  qDex++;
   var ootElements = document.getElementsByClassName("oot");
   for(var i = 0; i<ootElements.length; i++){
     ootElements[i].style.color = "black";
   }
-  displayTime();
+  if (qDex > questionArray.length - 1){
+    clearTimer();
+    document.getElementById("question").innerHTML = "";
+    document.getElementById("timer").innerHTML = "00";
+    document.getElementById("btnBox").innerHTML = "";
+    document.getElementById("btnBox").innerHTML =
+    '<p>Score: '+ goodAnswers +'/' + questionArray.length + '</p>\
+    <button type="button" id="startBtn" class="btn border">Play Again?</button>';
+  }
+  else {
+    populateDisplay();
+    qDex++;
+    displayTime();
+  }
 }
 
 //start function  Initializes answer buttons and randomizes the order of the questions
-document.getElementById("startBtn").onclick = function initGame(){
+$("#btnBox").on("click", "#startBtn", function(e){
+  qDex = 0;
+  goodAnswers = 0;
   document.getElementById("btnBox").innerHTML = "";
   document.getElementById("btnBox").innerHTML =
     '<button type="button" id="answer1" class="btn ansBtn mb-1 border oot">Answer1</button>\
@@ -213,7 +227,7 @@ document.getElementById("startBtn").onclick = function initGame(){
     populateDisplay();
     qDex++;
     displayTime();
-}
+});
 
 $("#btnBox").on("click", ".ansBtn", function(e){
   var answerBoolean = $(this).attr("value");
