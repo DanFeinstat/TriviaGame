@@ -147,7 +147,7 @@ function countdown(){
 
 //Countdown timer
 function displayTime(){
-  timeLeft = 10;
+  timeLeft = 15;
   console.log(timeLeft);
   document.getElementById("timer").innerHTML = timeLeft;
   intervalId = setInterval(countdown,1000);
