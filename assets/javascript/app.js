@@ -219,10 +219,10 @@ $("#btnBox").on("click", "#startBtn", function(e){
   goodAnswers = 0;
   document.getElementById("btnBox").innerHTML = "";
   document.getElementById("btnBox").innerHTML =
-    '<button type="button" id="answer1" class="btn ansBtn mb-1 border oot">Answer1</button>\
-    <button type="button" id="answer2" class="btn ansBtn mb-1 border oot">Answer2</button>\
-    <button type="button" id="answer3" class="btn ansBtn mb-1 border oot">Answer3</button>\
-    <button type="button" id="answer4" class="btn ansBtn mb-1 border oot">Answer4</button>';
+    '<button type="button" id="answer1" class="btn ansBtn mb-1 oot">Answer1</button>\
+    <button type="button" id="answer2" class="btn ansBtn mb-1 oot">Answer2</button>\
+    <button type="button" id="answer3" class="btn ansBtn mb-1 oot">Answer3</button>\
+    <button type="button" id="answer4" class="btn ansBtn mb-1 oot">Answer4</button>';
     shuffle(questionArray);
     populateDisplay();
     qDex++;
@@ -244,14 +244,4 @@ $("#btnBox").on("click", ".ansBtn", function(e){
     }
     clearTimer();
 })
-// document.getElementById("answer1").onclick = function(){
-//   if (this.getAttribute("value")){
-//     correctAnswer();
-//   } else if(this.getAttribute("value") === false){
-//     wrongAnswer();
-//   } else {
-//     null;
-//   }
-//   clearTimer();
-// }
-})
+})//document.load close
