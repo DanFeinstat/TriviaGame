@@ -173,6 +173,7 @@ function correctAnswer(){
   timeoutId = setTimeout(nextQuestion, 3000);
 }
 
+//failure condition
 function wrongAnswer(){
   badAnswers++;
   var ootElements = document.getElementsByClassName("oot");
@@ -181,7 +182,7 @@ function wrongAnswer(){
   }
   timeoutId = setTimeout(nextQuestion, 3000);
 }
-
+//get the information for the question from index qDex from questionArray and add it to the page
 function populateDisplay(){
   document.getElementById("question").innerHTML = questionArray[qDex].toDisplay;
   shuffle(questionArray[qDex].answers);
@@ -191,7 +192,8 @@ function populateDisplay(){
   }
 }
 
-
+//move to the next question
+//move to scorescreen if all questions are complete
 function nextQuestion(){
   var ootElements = document.getElementsByClassName("oot");
   for(var i = 0; i<ootElements.length; i++){
@@ -204,7 +206,7 @@ function nextQuestion(){
     document.getElementById("btnBox").innerHTML = "";
     document.getElementById("btnBox").innerHTML =
     '<p>Score: '+ goodAnswers +'/' + questionArray.length + '</p>\
-    <button type="button" id="startBtn" class="btn border">Play Again?</button>';
+    <button type="button" id="startBtn" class="btn">Play Again?</button>';
   }
   else {
     populateDisplay();
@@ -229,6 +231,7 @@ $("#btnBox").on("click", "#startBtn", function(e){
     displayTime();
 });
 
+//on click function for selecting an answer
 $("#btnBox").on("click", ".ansBtn", function(e){
   var answerBoolean = $(this).attr("value");
     if (answerBoolean === "true"){
